@@ -34,7 +34,7 @@ app.MapPost("/api/toll/calculate", (
 
         var fee = calculator.CalculateFee(request.Passages);
 
-        return Results.Ok(new CalculateFeeResponse(TotalFee: fee, Currency: "SEK"));
+        return Results.Ok(new CalculateFeeResponse(TotalFee: fee, Currency: tollConfig.Currency));
     });
 
 
