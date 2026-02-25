@@ -1,12 +1,16 @@
 
 using TollFeeCalculator.Interfaces;
 using TollFeeCalculator.Services;
+using TollFeeCalculator.Factories;
 
 namespace TollFeeCalculatorTests;
 
 public class TollFeeCalculatorTests
 {
-    private readonly ITollFeeCalculator _calculator = new TollFeeCalculatorHardCodedRequirements();
+    private readonly ITollFeeCalculator _calculator =
+        new TollFeeCalculatorService(
+            TollFeeCalculatorConfigFactory.CreateDefault(), 
+            new HolidayProvider2026());
 
 
     [Fact]
@@ -19,7 +23,7 @@ public class TollFeeCalculatorTests
     [Fact]
     public void CalculateFee_Null_ReturnsZero()
     {
-        var result = _calculator.CalculateFee(null);
+        var result = _calculator.CalculateFee(null!);
         Assert.Equal(0, result);
     }
 
