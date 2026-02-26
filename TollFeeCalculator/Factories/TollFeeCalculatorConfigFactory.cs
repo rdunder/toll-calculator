@@ -8,6 +8,7 @@ public static class TollFeeCalculatorConfigFactory
     {
         return new TollFeeCalculatorConfig
         {
+            Currency = "SEK",
             DailyMaxFee = 60,
             ChargeIntervalMinutes = 60,
             FeeSchedule = new List<TollFeeInterval>
